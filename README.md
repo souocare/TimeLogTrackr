@@ -3,7 +3,7 @@ One more task tracker and time logger, built with Python and Tkinter. Easily man
 
 ---
 
-## ✨ Features
+## Features
 - Create and manage multiple tasks
 - Start, pause and resume timers
 - Persistent storage using SQLite
