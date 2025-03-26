@@ -25,6 +25,7 @@ Planned features for upcoming releases:
 - [ ] Run the app in the background with a tray icon and menu (pause/resume tasks, toggle idle detection, quick add, etc.)
 
 ## Project Structure
+```text
 timelogtrackr/
 ├── main.py          # Main GUI application
 ├── task.py          # Task object logic
@@ -32,6 +33,7 @@ timelogtrackr/
 ├── tasks.db         # Auto-created local database
 ├── README.md
 └── requirements.txt #to be added
+```
 
 ## Database
 TimeLogTrackr uses a lightweight local SQLite database (`tasks.db`) to persist all tasks and tracked time.
