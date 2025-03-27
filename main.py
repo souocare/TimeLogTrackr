@@ -5,6 +5,7 @@ from tkinter import messagebox, simpledialog, ttk
 from datetime import datetime
 from db import initialize_database, get_connection
 from task import Task
+from reports import open_monthly_report_dialog
 
 
 class TaskTrackerApp:
@@ -27,6 +28,10 @@ class TaskTrackerApp:
         header = tk.Frame(self.root)
         header.pack(fill=tk.X, pady=10, padx=20)
 
+        # === LEFT FRAME ===
+        left_frame = tk.Frame(header)
+        left_frame.pack(side=tk.LEFT)
+
         today_label = tk.Label(
             header,
             text=f"Today, {datetime.now().strftime('%B %d')}",
@@ -42,17 +47,33 @@ class TaskTrackerApp:
             font=("Arial", 10, "bold"),
             command=self.add_task,
         )
-        add_button.pack(side=tk.LEFT, padx=20)
+        add_button.pack(side=tk.LEFT, padx=15)
 
         pause_all_button = tk.Button(
             header,
             text="Pause All",
-            bg="#e7edf3",
-            fg="#0e141b",
+            bg="#f33b14",
+            fg="white",
             font=("Arial", 10, "bold"),
             command=self.pause_all,
+            # dont need lambda because it doesn't pass any arguments
         )
-        pause_all_button.pack(side=tk.RIGHT)
+        pause_all_button.pack(side=tk.LEFT, padx=15)
+
+        # === RIGHT FRAME ===
+        right_frame = tk.Frame(header)
+        right_frame.pack(side=tk.RIGHT)
+
+        report_button = tk.Button(
+            header,
+            text="Monthly Report",
+            bg="#83df0e",
+            fg="white",
+            font=("Arial", 10, "bold"),
+            command=lambda: open_monthly_report_dialog(self.root, self.cursor, self.format_time)
+            # used lambda because it passes arguments and, with arguments, if passed without lambda, it will run immediately instead of only when clicked.
+        )
+        report_button.pack(side=tk.RIGHT, padx=20)
 
     def add_task(self):
         self.cursor.execute("SELECT DISTINCT name FROM tasks")
