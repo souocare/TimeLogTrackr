@@ -28,12 +28,15 @@ Planned features for upcoming releases:
 ## Project Structure
 ```text
 timelogtrackr/
-├── main.py          # Main GUI application
-├── task.py          # Task object logic
 ├── db.py            # SQLite handling
+├── main.py          # Main GUI application
+├── reports.py       # Task object logic
+├── task.py          # Task object logic
 ├── tasks.db         # Auto-created local database
 ├── README.md
-└── requirements.txt #to be added
+├── reports/         # Folder for report-related export files
+│   └──              # Exportedd files ...
+└── requirements.txt # to be added
 ```
 
 ## Database
