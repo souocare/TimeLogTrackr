@@ -16,7 +16,8 @@ Planned features for upcoming releases:
 - [ ] Filter tasks by date
 - [ ] Edit Time on a certain task
 - [ ] Auto-pause all running tasks after a set period of user inactivity
-- [ ] Generate daily/weekly/monthly time reports/statistics
+- [x] Generate monthly time reports/statistics
+- [ ] Generate daily/weekly time reports/statistics
 - [ ] Dark mode toggle
 - [ ] Improved UI design (icons, layout polish)
 - [ ] Export data
