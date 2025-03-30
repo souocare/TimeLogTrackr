@@ -8,7 +8,12 @@ from openpyxl import Workbook
 
 def open_monthly_report_dialog(root, cursor, format_time_callback):
     """
-    Opens a dialog for the user to choose month/year and triggers report generation.
+    Open a dialog to select the month and year for which to generate a report.
+
+    Parameters:
+    - root (tk.Tk): The main application window.
+    - cursor (sqlite3.Cursor): Cursor to execute SQL queries.
+    - format_time (function): Function to convert seconds to hh:mm:ss string.
     """
     report_window = Toplevel(root)
     report_window.title("Generate Monthly Report")
@@ -50,7 +55,16 @@ def open_monthly_report_dialog(root, cursor, format_time_callback):
 
 def generate_monthly_report(month, year, window, cursor, format_time, root):
     """
-    Generates a monthly report: saves it to Excel and shows a summary popup.
+    Generates a monthly report for a given month and year, saves it to an Excel file,
+    and displays the results in a popup.
+
+    Parameters:
+    - month (str): Month in MM format (e.g., '01' for January).
+    - year (str): Year in YYYY format.
+    - window (tk.Toplevel): The modal window to destroy after generating.
+    - cursor (sqlite3.Cursor): Cursor to access the task data from the database.
+    - format_time (function): Function to convert seconds to hh:mm:ss string.
+    - root (tk.Tk): The main application root to use as parent for messagebox.
     """
     if not month or not year:
         messagebox.showerror("Missing Fields", "Please select both month and year.")
