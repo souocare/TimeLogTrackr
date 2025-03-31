@@ -105,7 +105,7 @@ def generate_monthly_report(month, year, window, cursor, format_time, root):
 
     for name, time in rows:
         percent = (time / total_time) * 100
-        ws.append([name, format_time(time), f"{percent:.1f}%"])
+        ws.append([name, format_time(time), f"{percent:.1f}"])
 
     wb.save(file_path)
 
