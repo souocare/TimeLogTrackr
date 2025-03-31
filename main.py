@@ -213,6 +213,18 @@ class TaskTrackerApp:
         task_name = dropdown_var.get() or task_entry.get()
         if not task_name:
             return
+        
+        # Check if the task already exists for today
+        self.cursor.execute(
+            "SELECT 1 FROM tasks WHERE LOWER(name) = ? AND date = ?",
+            (task_name, today)
+        )
+        existing = self.cursor.fetchone()
+
+        if existing:
+            messagebox.showinfo("Duplicate Task", f"Task '{task_name}' already exists for today.", parent=self.root)
+            modal.destroy()
+            return
 
         self.task_names.add(task_name)
         today = datetime.now().strftime("%Y-%m-%d")
